@@ -4,30 +4,25 @@ local validIDs = {
     ["beta2"] = true,
     ["gamma3"] = true
 }
-
 local outputSide = "right" -- side with door
 local attempts = 0
 local maxAttempts = 3
 local locked = false
-
 -- === FUNCTIONS ===
 local function clear()
     term.clear()
     term.setCursorPos(1,1)
 end
-
 local function center(text, y)
     local w, h = term.getSize()
     term.setCursorPos(math.floor((w - #text)/2)+1, y)
     term.write(text)
 end
-
 local function openDoor()
     redstone.setOutput(outputSide, true)
     sleep(4) -- door open time
     redstone.setOutput(outputSide, false)
 end
-
 -- === MAIN LOOP ===
 while true do
     clear()
